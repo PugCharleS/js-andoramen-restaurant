@@ -1,0 +1,64 @@
+@media (max-width: 900px) {
+  #page {
+    grid-template-areas: "head"
+                         "nav"
+                         "cart"
+                         "main"
+                         "foot";
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    width: 100%;
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+  }
+
+  .header__title {
+    font-size: 60px;
+    margin: 20px;
+    -webkit-text-stroke: 1px black;
+  }
+
+  .header__subtitle {
+    margin-top: 30px;
+    font-size: 30px;
+    -webkit-text-stroke: 1px black;
+    color: #fff; 
+  }
+
+  #page > nav {
+    display: none;
+  }
+
+  .header__cta {
+    -webkit-text-stroke: 1px black;
+    color: #fff; 
+    font-size: 20px;
+    text-decoration: none;
+    border: 2px solid #000;
+    width: 100px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .header__cta:hover {
+    color: #fff;
+    border: 2px solid #fff;
+    font-size: 20px;
+    background-color: transparent;
+  }
+
+  .menu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #page > footer {
+    display: none;
+  }
+
+}
