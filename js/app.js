@@ -31,11 +31,6 @@ class Todo {
 
 
 // =====Funciones=====
-$(() => {
-  console.log('DOM READY');
-})
-
-
 // Esta es la funcion para poder renderizar el menu de forma procedural
 function renderMenu() {
   limpiar();
@@ -59,6 +54,7 @@ function renderMenu() {
       addOrder(elemento);
     });
   }
+
 }
 
 
@@ -91,7 +87,7 @@ const renderCart = () => {
             <button class="boton-deleteCart" id="btn-dlt${elemento.id}">X</button>
           </div>
         `);
-    
+
         // Llamada para la funcion de borrar producto al dar click en el boton X
         $(`#btn-dlt${elemento.id}`).click(function () {
           deleteOrder(cart.indexOf(elemento), elemento);
@@ -162,6 +158,7 @@ $('#erase-cart').click(function (e) {
 // <Funciones para la orden>
 
 
+
 // <Funciones para disminuir y aumentar la cantidad de un producto>
 const minusQuantity = (elemento) => {
   if (elemento.cantidad !== 0) {
@@ -180,18 +177,17 @@ const maxQuantity = (elemento) => {
 // <Funciones para disminuir y aumentar la cantidad de un producto>
 
 
+
 // <Funciones para mostrar y esconder el footer>
 $('#boton-eliminar').click(function (e) { 
   e.preventDefault();
-  $('#footer').css('display', 'none');
-  $('#boton-flotante').css('display', '');
+  $('#footer').slideUp(500);
 });
-
+ 
 // Funcion para poder mostrar el footer nuevamente despues de haber ocultado el boton flotante
 $('#boton-flotante').click(function (e) { 
   e.preventDefault();
-  $('#footer').css('display', '');
-  $('#boton-flotante').css('display', 'none');
+  $('#footer').slideDown();(500);
 });
 // <Funciones para mostrar y esconder el footer>
 
@@ -214,4 +210,3 @@ const cleanCart = () => {
 
 // =====Llamada de Funciones=====
 renderMenu();
-
