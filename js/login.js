@@ -1,22 +1,4 @@
 const URL_LOGIN = "../json/dblogin.json";
-const URL_COMMENTS = 'https://jsonplaceholder.typicode.com/comments';
-
-
-// Get para desplegar comentarios, WORK IN PROGRESS
-// $(document).ready(function () {
-//   $.get(URL_COMMENTS, (comments, status) => {
-//     if (status === 'success') {
-//       for (const comment of comments) {
-//         if (comment.id < 10) {
-//           $('.comments').append(`
-//           <h2>${comment.email}</h2>
-//           <p>${comment.body}</p>
-//           `);
-//         }
-//       }
-//     }
-//   })
-// });
 
 
 // Animaciones Concatenadas
@@ -28,12 +10,13 @@ $( ".input" ).focusout(function() {
   $( this ).find( "span" ).animate({"opacity":"1"}, 300);
 });
 
+
 // Una vez que se haya hecho submit del form entonces comparo mis inputs con mi JSON de usuarios 
 $(".login").submit(function(e){
   e.preventDefault();
   
   $.get(URL_LOGIN, (response, status) => {
-      if (status === 'success') {
+      if (status === 'success') {   
         for (const user of response) {
           if ($('#user').val() === user.user &&  $('#password').val() === user.password) {
 
@@ -41,7 +24,7 @@ $(".login").submit(function(e){
             
             setTimeout(() => {
               window.location.href = '../menu.html';
-            }, 1000);
+            }, 2000);
 
             return false;
 
@@ -76,7 +59,7 @@ const errorSubmit = () => {
 
   setTimeout(() => {
     window.location.href = '../index.html';
-  }, 2000);
+  }, 600);
 };
 
 

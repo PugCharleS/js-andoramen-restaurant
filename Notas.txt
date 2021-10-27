@@ -1,3 +1,0 @@
-Registro de Usuario
-Historial de Usuario - Esto sería con LocalStorage
-Terminar Preparando Orden

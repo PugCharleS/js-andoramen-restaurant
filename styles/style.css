@@ -447,3 +447,9 @@ footer > h2 {
   background: #000;
   border-radius: 50px;
 }
+
+.spinner {
+  margin: 40px;
+  display: flex;
+  gap: 20px;
+}

@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "nombre": "Ramen Shoyu",
+    "precio": 200,
+    "categoria": "comidas",
+    "img": "../assets/images/ramen-shoyu.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 2,
+    "nombre": "Miso Ramen'",
+    "precio": 150,
+    "categoria": "comidas",
+    "img": "../assets/images/miso-ramen.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 3,
+    "nombre": "Tonkotsu ramen",
+    "precio": 150,
+    "categoria": "comidas",
+    "img": "../assets/images/tonkotsu-ramen.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 4,
+    "nombre": "Tsukemen",
+    "precio": 250,
+    "categoria": "comidas",
+    "img": "../assets/images/tsukemen.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 5,
+    "nombre": "Coca-Cola",
+    "precio": 25,
+    "categoria": "bebida",
+    "img": "../assets/images/coca-cola.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 6,
+    "nombre": "Fuze Tea",
+    "precio": 15,
+    "categoria": "bebida",
+    "img": "../assets/images/fuze-tea.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 7,
+    "nombre": "Te de manzanilla",
+    "precio": 30,
+    "categoria": "bebida",
+    "img": "../assets/images/te-de-manzanilla.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 8,
+    "nombre": "Jugo de Naranja",
+    "precio": 25,
+    "categoria": "bebida",
+    "img": "../assets/images/jugo.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 9,
+    "nombre": "Limonada",
+    "precio": 25,
+    "categoria": "bebida",
+    "img": "../assets/images/limonada.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 10,
+    "nombre": "Sapporo Ramen",
+    "precio": 140,
+    "categoria": "comidas",
+    "img": "../assets/images/sapporo-ramen.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 11,
+    "nombre": "Tokyo Ramen",
+    "precio": 160,
+    "categoria": "comidas",
+    "img": "../assets/images/tokyo-ramen.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 12,
+    "nombre": "Hakata Ramen",
+    "precio": 200,
+    "categoria": "comidas",
+    "img": "../assets/images/hakata-ramen.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 13,
+    "nombre": "Kumamoto Ramen",
+    "precio": 170,
+    "categoria": "comidas",
+    "img": "../assets/images/kumanoto-ramen.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 14,
+    "nombre": "Agua de Piña",
+    "precio": 26,
+    "categoria": "bebida",
+    "img": "../assets/images/agua-de-pina.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 15,
+    "nombre": "Agua",
+    "precio": 10,
+    "categoria": "bebida",
+    "img": "../assets/images/agua-natural.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 16,
+    "nombre": "Sprite",
+    "precio": 18,
+    "categoria": "bebida",
+    "img": "../assets/images/sprite.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 17,
+    "nombre": "Akayu Ramen",
+    "precio": 145,
+    "categoria": "comidas",
+    "img": "../assets/images/akayu-ramen.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 18,
+    "nombre": "Flan Napolitano",
+    "precio": 30,
+    "categoria": "postres",
+    "img": "../assets/images/flan.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 19,
+    "nombre": "Brownie",
+    "precio": 18,
+    "categoria": "postres",
+    "img": "../assets/images/brownie.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 20,
+    "nombre": "Gelatina",
+    "precio": 25,
+    "categoria": "postres",
+    "img": "../assets/images/gelatina.jpg",
+    "cantidad": 1
+  }
+]

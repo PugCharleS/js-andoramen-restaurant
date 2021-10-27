@@ -37,26 +37,31 @@ function renderMenu() {
 
   $('#boton-menu').css('background-color', '#eeb243');
 
-  for (const elemento of todo) {
-    $('.menu').append(`
-    <div class="item" id="${elemento.id}">
-      <img src="${elemento.img}" alt="${elemento.nombre}">
-      <div class="item-texts">
-        <h2 class="item-texts__h2">${elemento.nombre}</h2>
-        <p class="item-texts__price"><strike>$${(elemento.precio+30)}</strike><span>$${elemento.precio}</span></p>
-        <button class="addBtn" id="btn${elemento.id}">Agregar al Carrito</button>
-      </div>
-    </div>
-    `);
-
-    // Si el boton de agregar al carrito recibe un click, entonces llama a la funcion addOrder
-    $(`#btn${elemento.id}`).on('click', function () {
-      addOrder(elemento);
-    });
-  }
-
+  $.get(URL_API, (response, status) => {
+    if (status === 'success') {
+      // Itero sobre cada uno de los elementos de todo
+      for (const elemento of response) {
+        $('.menu').append(`
+          <div class="item" id="${elemento.id}">
+            <img src="${elemento.img}" alt="${elemento.nombre}">
+            <div class="item-texts">
+              <h2 class="item-texts__h2">${elemento.nombre}</h2>
+              <p class="item-texts__price"><strike>$${(elemento.precio+30)}</strike><span>$${elemento.precio}</span></p>
+              <button class="addBtn" id="btn${elemento.id}">Agregar al Carrito</button>
+            </div>
+          </div>
+        `);
+      
+        // Si el boton de agregar al carrito recibe un click, entonces llama a la funcion addOrder
+        $(`#btn${elemento.id}`).on('click', function () {
+          addOrder(elemento);
+        });
+      }
+    } else {
+      console.log('Error en Servidor');
+    }
+  });
 }
-
 
 // <Funciones para la orden>
 // Funcion para renderizar el array del carrito u orden
