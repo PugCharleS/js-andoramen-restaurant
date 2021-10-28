@@ -2,11 +2,11 @@ const URL_LOGIN = "../json/dblogin.json";
 
 
 // Animaciones Concatenadas
-$( ".input" ).focusin(() => {
+$( ".input" ).focusin(function () {
   $( this ).find( "span" ).animate({"opacity":"0"}, 200);
 });
 
-$( ".input" ).focusout(() => {
+$( ".input" ).focusout(function () {
   $( this ).find( "span" ).animate({"opacity":"1"}, 300);
 });
 
@@ -16,7 +16,7 @@ $(".login").submit(function(e){
   e.preventDefault();
   
   $.get(URL_LOGIN, (response, status) => {
-      if (status === 'success') {   
+      if (status === 'success') {  
         for (const user of response) {
           if ($('#user').val() === user.user && $('#password').val() === user.password) {
 
@@ -60,11 +60,4 @@ const errorSubmit = () => {
   setTimeout(() => {
     window.location.href = '../index.html';
   }, 600);
-};
-
-
-
-
-
-
-
+}
