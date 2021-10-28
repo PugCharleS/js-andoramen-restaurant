@@ -49,7 +49,7 @@ body {
 #page > header {
   grid-area: head;
   background-color: #fff;
-}
+} 
 
 .header {
   background-image: 
@@ -69,7 +69,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} 
 
 .header__texts {
   color: #fff;
@@ -452,4 +452,28 @@ footer > h2 {
   margin: 40px;
   display: flex;
   gap: 20px;
+}
+
+#tituloVentana {
+  color: #000;
+}
+
+#myProgress {
+  width: 100%;
+  background-color: grey;
+  display: none;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: green;
+}
+
+#total {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  flex-direction: column;
+  font-size: 20px;
 }

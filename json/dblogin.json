@@ -1,12 +1,22 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "user": "admin",
     "password": "admin"
   },
   {
-    "id": "2",
+    "id": 2,
     "user": "admin2",
     "password": "admin2"
+  },
+  {
+    "id": 3,
+    "user": "empleado",
+    "password": "empleado"
+  },
+  {
+    "id": 4,
+    "user": "empleado2",
+    "password": "empleado2"
   }
 ]

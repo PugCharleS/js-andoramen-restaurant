@@ -7,10 +7,7 @@ $('#boton-menu').click(function (e) {
   e.preventDefault();
   limpiar();
 
-  $('#boton-menu').css('background-color', '#eeb243');
-  $('#boton-ramen').css('background-color', '#ddd');
-  $('#boton-bebidas').css('background-color', '#ddd');
-  $('#boton-postres').css('background-color', '#ddd');
+  colorMenu();
 
   spinner();
 
@@ -25,10 +22,7 @@ $('#boton-ramen').click(function (e) {
   e.preventDefault();
   limpiar();
 
-  $('#boton-menu').css('background-color', '#ddd');
-  $('#boton-ramen').css('background-color', '#eeb243');
-  $('#boton-bebidas').css('background-color', '#ddd');
-  $('#boton-postres').css('background-color', '#ddd');
+  colorRamen();
 
   spinner();
 
@@ -73,10 +67,7 @@ $('#boton-bebidas').click(function (e) {
   e.preventDefault();
   limpiar();
 
-  $('#boton-menu').css('background-color', '#ddd');
-  $('#boton-ramen').css('background-color', '#ddd');
-  $('#boton-bebidas').css('background-color', '#eeb243');
-  $('#boton-postres').css('background-color', '#ddd');
+  colorBebida();
 
   spinner();
 
@@ -119,10 +110,7 @@ $('#boton-postres').click(function (e) {
   e.preventDefault();
   limpiar();
 
-  $('#boton-menu').css('background-color', '#ddd');
-  $('#boton-ramen').css('background-color', '#ddd');
-  $('#boton-bebidas').css('background-color', '#ddd');
-  $('#boton-postres').css('background-color', '#eeb243');
+  coloPostre();
 
   spinner();
 

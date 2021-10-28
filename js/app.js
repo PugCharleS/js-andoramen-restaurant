@@ -124,17 +124,21 @@ const renderCart = () => {
 
 // Funcion para poder hacer push del producto hacia el array de mi carrito
 const addOrder = (elemento) => {
-  cart.push(elemento);
   // Con este for no dejo que se renderice el objeto en caso de que el objeto ya exista dentro del array cart y solo sumo la cantidad de ese objeto en sus propiedas, de lo contrario, se renderiza
-  for(let i = cart.length -1; i >=0; i--){
-    if(cart.indexOf(cart[i]) !== i) {
-      cart.splice(i,1)
-      // Aqui sumo la cantidad si ya existe el objeto dentro del array cart
-      ++elemento.cantidad;
-      renderCart();
-    } else {
-      renderCart();
+  if (cart.length === 0) {
+    cart.push(elemento);
+    renderCart();
+    return false;
+  } else {
+    for (const prod of cart) {
+      if (prod.id === elemento.id) {
+        ++prod.cantidad;
+        renderCart();
+        return false;
+      } 
     }
+    cart.push(elemento);
+    renderCart();
   }
 }
 
@@ -166,9 +170,9 @@ $('#erase-cart').click(function (e) {
 
 // <Funciones para disminuir y aumentar la cantidad de un producto>
 const minusQuantity = (elemento) => {
-  if (elemento.cantidad !== 0) {
+  if (elemento.cantidad > 0) {
     --elemento.cantidad;
-    sessionStorage.setItem('cart', JSON.stringify( cart ));
+    // sessionStorage.setItem('cart', JSON.stringify( cart ));
     renderCart();
   }
 }
@@ -195,6 +199,75 @@ $('#boton-flotante').click(function (e) {
   $('#footer').slideDown();(500);
 });
 // <Funciones para mostrar y esconder el footer>
+
+
+
+// <Funciones para ordenar prodcutos>
+$('#btn-ordenar').click(function (e) { 
+  e.preventDefault();
+
+  $('#modal-body').text('');
+
+  if (cart.length > 0) {
+    $('#btn-aceptar-recibo').css({"display":"block"});
+    for (const elemento of cart) {
+      $('#modal-body').append(`
+        <div class="alert alert-info">
+          <strong style="font-size: 20px">${elemento.nombre}</strong>
+          <br>
+          <strong>Cantidad: <span style="color:red">${elemento.cantidad}</span></strong>
+          <br>
+          <strong>Precio: <span style="color:red">$${elemento.precio*elemento.cantidad}</span></strong>
+        </div>
+      `);
+    }
+  } else {
+    $('#btn-aceptar-recibo').css({"display":"none"});
+    $('#modal-body').html('<h3 style="color:black">No hay nada en el carrito</h3>');
+  }
+
+  if (cart.length > 0) {
+    $('#modal-body').append(`
+      <div class="alert alert-dark" id="total">
+        <strong>SubTotal: $${subtotal}</strong>
+        <strong>Total: $${iva(subtotal)}</strong>
+      </div>
+    `);
+  }
+});
+
+
+$('#btn-aceptar-recibo').click(function (e) { 
+  e.preventDefault();
+
+  if (cart.length > 0) {
+    move();
+    $('#myProgress').css({"display":"block"});
+  } 
+
+  setTimeout(() => {
+    cart = [];
+    sessionStorage.clear();
+    $('#payment').css('display','none');
+    renderCart(); 
+
+    $('#modal-body').text('');
+    $('#modal-body').append(`<h2 style="color:black">Orden Recibida y en Proceso</h2>`);
+
+    subtotal = 0;
+    $('#myProgress').css({"display":"none"});
+  }, 3000);
+
+});
+// <Funciones para ordenar prodcutos>
+
+
+
+// <Funcion para calcular el IVA>
+const iva = () => {
+  return (subtotal*1.16).toFixed(2);
+}
+// <Funcion para calcular el IVA>
 
 
 

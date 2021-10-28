@@ -68,30 +68,27 @@
           <div class="cartButtons">
             <button class="btn btn-danger" id="erase-cart">Borrar Orden</button>
 
-            <button class="btn btn-success" data-toggle="modal" data-target="#ventanaModal">Ordenar</button>
+            <button class="btn btn-success" data-toggle="modal" data-target="#ventanaModal" id="btn-ordenar">Ordenar</button>
           </div>
 
           <div class="modal fade" id="ventanaModal" tabindex="-1" role="dialog" aria-labelledby="tituloVentana" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
-
                 <div class="modal-header">
-                  <h5 id="tituloVentana">Titulo de la ventana modal</h5>
-                  <button class="boton-modal-cerrar" data-dismiss="modal" aria-label="Cerrar">
-                    <span aria-hidden="true">X</span>
-                  </button>
+                  <h5 id="tituloVentana">Recibo</h5>
                 </div>
 
-                <div class="modal-body">
-                  <div class="alert alert-success">
-                    <h6></h6>
-                    <strong>Preparando Orden</strong>
-                  </div>
+                <div class="modal-body" id="modal-body">
+                  <!-- Generando orden -->
                 </div>
+
+                <div id="myProgress">
+                  <div id="myBar"></div>
+                </div>                
 
                 <div class="modal-footer">
-                  <button class="btn btn-warning" type="button" data-dismiss="modal">Cerrar</button>
-                  <button class="btn btn-success" type="button">Aceptar</button>
+                  <button class="btn btn-warning" type="button" data-dismiss="modal" id="btn-cerrar-recibo">Cerrar</button>
+                  <button class="btn btn-success" type="button" id="btn-aceptar-recibo">Aceptar</button>
                 </div>
 
               </div>
@@ -122,7 +119,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/684cf6df5c.js" crossorigin="anonymous"></script>
   <!-- MI APP -->
-  <script src="utils/spinner.js"></script>
+  <script src="utils/animations.js"></script>
   <script src="js/filter.js"></script>
   <script src="js/app.js"></script>
   <script src="js/storage.js"></script>

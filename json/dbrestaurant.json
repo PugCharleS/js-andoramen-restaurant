@@ -9,7 +9,7 @@
   },
   {
     "id": 2,
-    "nombre": "Miso Ramen'",
+    "nombre": "Miso Ramen",
     "precio": 150,
     "categoria": "comidas",
     "img": "../assets/images/miso-ramen.jpg",
