@@ -20,6 +20,7 @@ const colorMenu = () => {
   $('#boton-ramen').css('background-color', '#ddd');
   $('#boton-bebidas').css('background-color', '#ddd');
   $('#boton-postres').css('background-color', '#ddd');
+  $('#boton-platillo').css('background-color', '#ddd');
 }
 
 const colorRamen = () => {
@@ -27,6 +28,8 @@ const colorRamen = () => {
   $('#boton-ramen').css('background-color', '#eeb243');
   $('#boton-bebidas').css('background-color', '#ddd');
   $('#boton-postres').css('background-color', '#ddd');
+  $('#boton-platillo').css('background-color', '#ddd');
+
 }
 
 const colorBebida = () => {
@@ -34,15 +37,28 @@ const colorBebida = () => {
   $('#boton-ramen').css('background-color', '#ddd');
   $('#boton-bebidas').css('background-color', '#eeb243');
   $('#boton-postres').css('background-color', '#ddd');
+  $('#boton-platillo').css('background-color', '#ddd');
+
 }
 
-const coloPostre = () => {
+const colorPostre = () => {
   $('#boton-menu').css('background-color', '#ddd');
   $('#boton-ramen').css('background-color', '#ddd');
   $('#boton-bebidas').css('background-color', '#ddd');
   $('#boton-postres').css('background-color', '#eeb243');
+  $('#boton-platillo').css('background-color', '#ddd');
 }
 
+const colorPlatillo = () => {
+  $('#boton-menu').css('background-color', '#ddd');
+  $('#boton-ramen').css('background-color', '#ddd');
+  $('#boton-bebidas').css('background-color', '#ddd');
+  $('#boton-postres').css('background-color', '#ddd');
+  $('#boton-platillo').css('background-color', '#eeb243');
+}
+
+
+// Funcion para barra de carga
 var i = 0;
 function move() {
   if (i == 0) {

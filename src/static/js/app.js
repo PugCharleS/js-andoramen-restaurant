@@ -13,23 +13,6 @@ let cart = [];
 
 
 
-// Clase
-class Todo {
-  // Objeto Constructor
-  constructor(nombre, precio = 0, descripcion = 'No tiene descripción', categoria, img, cantidad) {
-    this.nombre = nombre;
-    this.precio = precio;
-    this.descripcion = descripcion;
-    this.categoria = categoria;
-    this.img = img;
-    this.cantidad = cantidad;
-  }
-  // Termina Objeto Constructor
-}
-// Termina Clase
-
-
-
 // =====Funciones=====
 // Esta es la funcion para poder renderizar el menu de forma procedural
 function renderMenu() {
@@ -45,8 +28,10 @@ function renderMenu() {
           <div class="item" id="${elemento.id}">
             <img src="${elemento.img}" alt="${elemento.nombre}">
             <div class="item-texts">
+              <i class="fas fa-info-circle info-icon" id="info${elemento.id}"></i>
               <h2 class="item-texts__h2">${elemento.nombre}</h2>
               <p class="item-texts__price"><strike>$${(elemento.precio+30)}</strike><span>$${elemento.precio}</span></p>
+              <p class="item-texts__desc" id="desc${elemento.id}">${elemento.desc}</p>
               <button class="addBtn" id="btn${elemento.id}">Agregar al Carrito</button>
             </div>
           </div>
@@ -56,12 +41,19 @@ function renderMenu() {
         $(`#btn${elemento.id}`).on('click', function () {
           addOrder(elemento);
         });
+
+        $(`#info${elemento.id}`).click(function (e) { 
+          e.preventDefault();
+          showInfo(elemento);
+        });
       }
     } else {
       console.log('Error en Servidor');
     }
   });
 }
+
+
 
 // <Funciones para la orden>
 // Funcion para renderizar el array del carrito u orden
@@ -154,17 +146,19 @@ const deleteOrder = (i, elemento) => {
   sessionStorage.setItem('cart', JSON.stringify( cart ));
   renderCart();
 }
-
-// Funcion para borrar el carrito al dar click sobre el boton 'Borrar Orden'
-$('#erase-cart').click(function (e) { 
-  e.preventDefault();
-  cart = [];
-  sessionStorage.clear();
-  $('#payment').css('display','none');
-  $('#cart-container').text('No ha agregado ningun platillo o bebida');
-  renderCart(); 
-});
 // <Funciones para la orden>
+
+
+
+// <Funcionalidad extra>
+function showInfo(elemento) {
+  if ($(`#desc${elemento.id}`).css('display') === 'none') {
+    $(`#desc${elemento.id}`).css('display', 'flex');
+  } else {
+    $(`#desc${elemento.id}`).css('display', 'none');
+  }
+}
+// <Funcionalidad extra>
 
 
 
@@ -172,7 +166,6 @@ $('#erase-cart').click(function (e) {
 const minusQuantity = (elemento) => {
   if (elemento.cantidad > 0) {
     --elemento.cantidad;
-    // sessionStorage.setItem('cart', JSON.stringify( cart ));
     renderCart();
   }
 }
@@ -184,6 +177,28 @@ const maxQuantity = (elemento) => {
   }
 }
 // <Funciones para disminuir y aumentar la cantidad de un producto>
+
+
+
+// <Funcion para calcular el IVA>
+const iva = () => {
+  return (subtotal*1.16).toFixed(2);
+}
+// <Funcion para calcular el IVA>
+
+
+
+// <Funciones para limpiar el HTML>
+// Esta funcion es para poder limpiar lo que se muestra en pantalla para posteriormente poder mostrar sola el render del filtro
+const limpiar = () =>   {
+  $('.menu').text('');
+}
+
+// Funcion para limpiar lo que se muestra dentro de la orden o carrito
+const cleanCart = () => {
+  $('#cart-container').text('');
+}
+// <Funciones para limpiar el HTML>
 
 
 
@@ -202,12 +217,148 @@ $('#boton-flotante').click(function (e) {
 
 
 
-// <Funciones para ordenar prodcutos>
-$('#btn-ordenar').click(function (e) { 
+// <Funcinoes para meseros>
+$('#boton-meseros').click(function (e) { 
   e.preventDefault();
+  renderMeseros();
+  renderMenu();
+});
 
+function renderMeseros() {
+  document.getElementById('nav').innerHTML='';
+  $('#boton-meseros').css('display', 'none');
+  $('#nav').css('display', 'grid');
+  $('.header__subtitle').html('BIENVENIDO &#8595;');
+  $('#main').css('display', 'grid');
+
+  document.getElementById('main').innerHTML='';
+
+  $('#nav').append(`
+    <div class="nav__filters">
+      <a href="#" class="nav__items" id="boton-menu">MEN&Uacute; DEL D&Iacute;A</a>
+      <a href="#" class="nav__items" id="boton-platillo">PRUEBA TU SUERTE</a>
+      <a href="#" class="nav__items" id="boton-ramen">RAMEN</a>
+      <a href="#" class="nav__items" id="boton-bebidas">BEBIDAS</a>
+      <a href="#" class="nav__items" id="boton-postres">POSTRES</a>
+    </div>  
+  `);
+
+  $('#main').append(`
+  <!-- Accpordion -->
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="cartBtn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Ver Orden &#11021;
+          </button>
+        </h5>
+      </div>
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body" id="cart-container">
+          <!-- Cart Content  -->       
+          No ha agregado ningun platillo o bebida     
+        </div>
+        
+      </div>
+      <div class="payment" id="payment">
+         
+      </div>
+
+      <div class="cartButtons">
+        <button class="btn btn-danger" id="erase-cart">Borrar Orden</button>
+        <button class="btn btn-success" data-toggle="modal" data-target="#ventanaModal" id="btn-ordenar">Ordenar</button>
+      </div>
+
+      <div class="modal fade" id="ventanaModal" tabindex="-1" role="dialog" aria-labelledby="tituloVentana" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 id="tituloVentana">Recibo</h5>
+            </div>
+
+            <div class="modal-body" id="modal-body">
+              <!-- Generando orden -->
+            </div>
+
+            <div id="myProgress">
+              <div id="myBar"></div>
+            </div>                
+
+            <div class="modal-footer">
+              <button class="btn btn-warning" type="button" data-dismiss="modal" id="btn-cerrar-recibos">Cerrar</button>
+              <button class="btn btn-success" type="button" id="btn-aceptar-recibo">Aceptar</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Accordion -->
+
+  <!-- Menu Cards -->
+  <div class="menu container" id="menu">
+    <!-- Generating the Menu by JS -->
+  </div>
+  <!-- End of Menu Cards -->
+  `);
+
+  // Funcion para borrar el carrito al dar click sobre el boton 'Borrar Orden'
+  $('#erase-cart').click(function (e) { 
+    e.preventDefault();
+    borrarCarrito();
+  });
+
+
+  $('#btn-ordenar').click(function (e) { 
+    e.preventDefault();
+    ordenar();
+  });
+
+  $('#btn-aceptar-recibo').click(function (e) { 
+    e.preventDefault();
+    aceptarRecibo();
+  });
+
+  $('#boton-menu').click(function (e) { 
+    e.preventDefault();
+    renderMenuDia();
+  });
+
+  $('#boton-ramen').click(function (e) {
+    e.preventDefault();
+    renderRamen();
+  });
+
+  $('#boton-bebidas').click(function (e) {
+    e.preventDefault();
+    renderBebidas();
+  });
+
+  $('#boton-postres').click(function (e) { 
+    e.preventDefault();
+    renderPostres();
+  });
+
+  $('#boton-platillo').click(function (e) { 
+    e.preventDefault();
+    console.log('Platillo');
+    makeChoices()
+  });
+}
+
+const borrarCarrito = () => {
+  cart = [];
+  sessionStorage.clear();
+  $('#payment').css('display','none');
+  $('#cart-container').text('No ha agregado ningun platillo o bebida');
+  renderCart(); 
+}
+
+const ordenar = () => {
   $('#modal-body').text('');
-
+  
   if (cart.length > 0) {
     $('#btn-aceptar-recibo').css({"display":"block"});
     for (const elemento of cart) {
@@ -234,12 +385,9 @@ $('#btn-ordenar').click(function (e) {
       </div>
     `);
   }
-});
+}
 
-
-$('#btn-aceptar-recibo').click(function (e) { 
-  e.preventDefault();
-
+const aceptarRecibo = () => {
   if (cart.length > 0) {
     move();
     $('#myProgress').css({"display":"block"});
@@ -253,36 +401,13 @@ $('#btn-aceptar-recibo').click(function (e) {
 
     $('#modal-body').text('');
     $('#modal-body').append(`<h2 style="color:black">Orden Recibida y en Proceso</h2>`);
+    $('#btn-aceptar-recibo').css({"display":"none"});
 
     subtotal = 0;
     $('#myProgress').css({"display":"none"});
   }, 3000);
-
-});
-// <Funciones para ordenar prodcutos>
-
-
-
-// <Funcion para calcular el IVA>
-const iva = () => {
-  return (subtotal*1.16).toFixed(2);
 }
-// <Funcion para calcular el IVA>
-
-
-
-// <Funciones para limpiar el HTML>
-// Esta funcion es para poder limpiar lo que se muestra en pantalla para posteriormente poder mostrar sola el render del filtro
-const limpiar = () =>   {
-  $('.menu').text('');
-}
-
-// Funcion para limpiar lo que se muestra dentro de la orden o carrito
-const cleanCart = () => {
-  $('#cart-container').text('');
-}
-// <Funciones para limpiar el HTML>
-// Termina Funciones
+// <Funciones para meseros>
 
 
 

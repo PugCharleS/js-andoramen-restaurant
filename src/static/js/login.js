@@ -1,6 +1,5 @@
 const URL_LOGIN = "../json/dblogin.json";
 
-
 // Animaciones Concatenadas
 $( ".input" ).focusin(function () {
   $( this ).find( "span" ).animate({"opacity":"0"}, 200);

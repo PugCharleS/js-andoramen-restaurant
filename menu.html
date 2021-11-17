@@ -13,9 +13,10 @@
   <!-- BOOTSTRAP -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <!-- MY STYLES -->
-  <link rel="stylesheet" href="styles/style.css">
-  <link rel="stylesheet" href="styles/responsive.css">
+  <link rel="stylesheet" href="./src/static/styles/style.css">
+  <link rel="stylesheet" href="./src/static/styles/responsive.css">
   <link rel="shortcut icon" href="assets/images/ramen.ico">
+  <link rel="stylesheet" href="./src/static/styles/chat.css">
 
 
   <!-- FONT AWESOME -->
@@ -24,93 +25,74 @@
 <body id="body">
 
   <section id="page">
-    <header class="header">
+    <header class="header" id="header">
       <div class="container">
         <section class="header__container">
           <div class="header__texts">
-            <h1 class="header__title">Bienvenido a AndoRAMEN</h1>
-            <h2 class="header__subtitle">THE BEST RAMEN OF ALL</h2>
-            <a href="#nav" class="header__cta">Ver Men&uacute;</a>
+            <h1 class="header__title">AndoRAMEN</h1>
+            <h2 class="header__subtitle">BIENVENIDO</h2>
+            <a href="#" class="header__cta" id="boton-meseros">Realizar Pedido</a>
           </div>
         </section>
       </div>
     </header>
+    
 
     <nav class="nav" id="nav">
-      <a href="#" class="nav__items" id="boton-menu">MEN&Uacute; DEL D&Iacute;A</a>
-      <a href="#" class="nav__items" id="boton-ramen">RAMEN</a>
-      <a href="#" class="nav__items" id="boton-bebidas">BEBIDAS</a>
-      <a href="#" class="nav__items" id="boton-postres">POSTRES</a>
+
     </nav>
 
     <main id="main">
-      <!-- Accpordion -->
-      <div id="accordion">
-        <div class="card">
-          <div class="card-header" id="headingOne">
-            <h5 class="mb-0">
-              <button class="cartBtn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Ver Orden &#11021;
-              </button>
-            </h5>
-          </div>
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body" id="cart-container">
-              <!-- Cart Content  -->       
-              No ha agregado ningun platillo o bebida     
-            </div>
-            
-          </div>
-          <div class="payment" id="payment">
-             
-          </div>
+        
+    </main>
 
-          <div class="cartButtons">
-            <button class="btn btn-danger" id="erase-cart">Borrar Orden</button>
+    <!-- <button class="boton-flotante" id="boton-flotante">^</button>  -->
 
-            <button class="btn btn-success" data-toggle="modal" data-target="#ventanaModal" id="btn-ordenar">Ordenar</button>
-          </div>
+    <footer id="footer">
 
-          <div class="modal fade" id="ventanaModal" tabindex="-1" role="dialog" aria-labelledby="tituloVentana" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 id="tituloVentana">Recibo</h5>
+      <!-- Chat Bar Block -->
+      <div class="chat-bar-collapsible">
+        <button id="chat-button" class="collapsible" type="button">ChatBot!
+          <i id="chat-icon" class="fa fa-fw fa-comments-o" style="color: #fff;"></i>
+        </button>
+
+        <div class="content">
+          <div class="full-chat-block">
+            <!-- Message Container -->
+            <div class="outer-container">
+              <div class="chat-container">
+
+                <!-- Messages -->
+                <div id="chatbox">
+                  <h5 id="chat-timestamp"></h5>
+                  <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
                 </div>
 
-                <div class="modal-body" id="modal-body">
-                  <!-- Generando orden -->
+                <!-- User Input Box -->
+                <div class="chat-bar-input-block">
+                  <div id="userInput">
+                    <input type="text" id="textInput" class="input-box" type="text" name="msg" placeholder="Da 'Enter' para enviar mensaje">
+                    <p></p>
+                  </div>
+
+                  <div class="chat-bar-icons">
+                    <i id="chat-icon" class="fa fa-fw fa-heart" style="color: crimson;" onclick="heartButton()"></i>
+                    <i id="chat-icon" class="fa fa-fw fa-send" style="color: #333;" onclick="sendButton()"></i>
+                  </div>
                 </div>
 
-                <div id="myProgress">
-                  <div id="myBar"></div>
-                </div>                
-
-                <div class="modal-footer">
-                  <button class="btn btn-warning" type="button" data-dismiss="modal" id="btn-cerrar-recibo">Cerrar</button>
-                  <button class="btn btn-success" type="button" id="btn-aceptar-recibo">Aceptar</button>
+                <div id="chat-bar-bottom">
+                  <p></p>
                 </div>
-
               </div>
             </div>
           </div>
-          <!-- <button class="btn-pay" id="btn-pay">COMPRAR</button> -->
         </div>
       </div>
-      <!-- End of Accordion -->
 
-      <!-- Menu Cards -->
-      <div class="menu container" id="menu">
-        <!-- Generating the Menu by JS -->
-      </div>
-      <!-- End of Menu Cards -->
-      <button class="boton-flotante" id="boton-flotante">^</button>    
-    </main>
 
-    <footer id="footer">
-      <h2>Descuentos Todo El D&iacute;a!</h2> 
-      <button class="boton-eliminar" id="boton-eliminar">X</button>      
-      </footer>
+      <!-- <button class="boton-eliminar" id="boton-eliminar">X</button> -->
+    </footer>
   </section>
   
   <!-- BOOTSTRAP -->
@@ -120,8 +102,23 @@
   <script src="https://kit.fontawesome.com/684cf6df5c.js" crossorigin="anonymous"></script>
   <!-- MI APP -->
   <script src="utils/animations.js"></script>
-  <script src="js/filter.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/storage.js"></script>
+  <script src="./src/static/js/filter.js"></script>
+  <script src="./src/static/js/app.js"></script>
+  <script src="./src/static/js/storage.js"></script>
+  <script src="./src/static/js/chat.js"></script>
+  <script src="./src/static/js/response.js"></script>
 </body>
 </html>
+
+
+<!-- <div class="admin-container">
+  <div class="left-container">
+
+  </div>
+  <div class="right-container">
+
+  </div>
+</div> -->
+
+
+

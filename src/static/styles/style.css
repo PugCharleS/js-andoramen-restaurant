@@ -17,6 +17,7 @@
 
 html {
   position: relative;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -54,7 +55,7 @@ body {
 .header {
   background-image: 
   radial-gradient(circle, var(--salmonColorGrad) 50%, var(--redColorGrad) 100%),
-  url('../assets/backgrounds/img2.jpg');
+  url('../../../assets/backgrounds/img2.jpg');
   width: 100%;
   height: 100vh;
   background-attachment: fixed;
@@ -93,19 +94,20 @@ body {
 .header__cta {
   -webkit-text-stroke: 2px black;
   color: #fff; 
-  font-size: 30px;
+  font-size: 36px;
   text-decoration: none;
   border: 2px solid #000;
   width: 120px;
-  padding: 10px;
+  padding: 15px;
   transition: all 0.2s ease;
   border-radius: 8px;
+  margin: 30px;
 }
 
 .header__cta:hover {
   color: #fff;
   border: 2px solid #fff;
-  font-size: 36px;
+  font-size: 42px;
   background-color: var(--salmonColor);
 }
 /* TERMINA HEADER */
@@ -113,8 +115,9 @@ body {
 
 /* NAV */
 #page > nav {
+  display: none;
   grid-area: nav;
-  height: 100px;
+  height: 200px;
   background-color: #000;
   font-family: "Raleway", sans-serif;
   align-items: center;
@@ -122,19 +125,21 @@ body {
   font-weight: bold;
 }
 
-.nav > .nav__items {
+
+.nav__filters > .nav__items {
   background-color: #ddd;
   border: 2px solid #000;
-  padding: 10px 15px;
+  padding: 12px 8px;
   color: #000;
+  line-height: 70px;
   text-decoration: none;
   transition: 0.3s ease;
-  font-size: 22px;
-  margin: 20px;
-  border-radius: 8px;
+  font-size: 24px;
+  margin: 10px;
+  border-radius: 12px;
 }
 
-.nav > .nav__items:hover {
+.nav__items:hover {
   transform: scale(1.2);
 }
 /* TERMINA NAV */
@@ -142,6 +147,7 @@ body {
 
 /* MAIN */
 #page > main {
+  display: none;
   grid-area: main;
   height: 1000px;
   background-color: #fff;
@@ -184,8 +190,9 @@ body {
   background-color: #555;
   text-align: left;
   border-radius: 0px 30px 30px 30px / 0px 30px 30px 30px;
-  box-shadow: 2px 2px 35px 2px rgba(255, 255, 255, 0.5);
+  /* box-shadow: 2px 2px 35px 2px rgba(255, 255, 255, 0.5); */
   margin: 20px;
+  color: #fff;
 }
 
 .product > img {
@@ -329,6 +336,9 @@ body {
   width: 90%;
   margin: 0 auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .item-texts > h2 {
@@ -352,6 +362,21 @@ body {
 
 .item-texts__desc {
   font-size: 16px;
+  color: #000;
+  display: none;
+  align-self: center;
+}
+
+.info-icon {
+  color: #000;
+  font-size: 35px;
+  margin-top: 12px;
+  float: right;
+  transition: 0.3s ease;
+}
+
+.info-icon:hover {
+  transform: scale(1.25);
 }
 
 .addBtn {
@@ -374,23 +399,16 @@ body {
 
 #page > footer {
   font-family: "Raleway", sans-serif;
-  height: 100px;
+  /* height: 100px;
   width: 100%;
-  grid-area: foot;
+  grid-area: foot; */
   background-color: #eeb243;
   display: flex;
   justify-content: center;
   gap: 150px;
   align-items: center;
   position: fixed;
-  bottom: 0;
-}
-
-footer > h2 {
-  position: relative;
-  font-size: 30px;
-  font-weight: bold;
-  float: left;
+  bottom: 0; 
 }
 
 .boton-eliminar{
@@ -404,8 +422,8 @@ footer > h2 {
   float: right;
   font-weight: bold;
   position: fixed;
-	bottom: 75px;
-	right: 30px;
+	bottom: 450px;
+	right: 10px;
 }
 
 .boton-flotante {
@@ -419,7 +437,7 @@ footer > h2 {
   float: right;
   position: fixed;
 	bottom: 75px;
-	right: 30px;
+	right: 10px;
   display: block;
   font-weight: bold;
 }
@@ -449,7 +467,7 @@ footer > h2 {
 }
 
 .spinner {
-  margin: 40px;
+  margin: 20px;
   display: flex;
   gap: 20px;
 }

@@ -1,0 +1,28 @@
+{
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "webpack": "^5.62.1"
+  },
+  "name": "andoramen-restaurant",
+  "description": "\"# andoramen-restaurant\"",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PugCharleS/andoramen-restaurant.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PugCharleS/andoramen-restaurant/issues"
+  },
+  "homepage": "https://github.com/PugCharleS/andoramen-restaurant#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  }
+}
